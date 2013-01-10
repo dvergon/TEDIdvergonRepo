@@ -1,0 +1,123 @@
+@font-face {
+	font-family: asap-bolditalic;
+	src: url('font/Asap-BoldItalic.ttf');
+}
+
+body{
+	background-color:#097591;
+	font-family: 'asap-bolditalic', sans-serif;
+	color: #ffffff;
+}
+
+table{
+    border: 1px solid black;
+    table-layout: fixed;
+    width: 550px;
+    height: 250px;
+    text-align: center;
+}
+
+table.tablaAccesoria{
+
+	border: 1px solid black;
+    table-layout: fixed;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 95px;
+    height: 35px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#contenidoIzq{
+	width: 50%;
+	height: 50%;
+	float:left;
+}
+
+#contenioDer{
+
+	width: 50%;
+	height: 50%;
+	float:right;
+}
+
+#divisorIzq{
+	float: left;
+	width: 300px;
+}
+
+#dihibridoDiv{
+	float: right;
+	width: 300px;
+}
+
+#monohibridoDiv{
+	float: left;
+}
+
+#dihibridoDiv{
+	float: right;
+}
+
+#contenedorEnunciado{
+	float: left;
+}
+
+#contenedorOpciones{
+}
+
+#contenedorTablas{
+	float: left;
+	margin-left: 100px;
+}
+
+#seleccionTablaDiv{
+	position: relative;
+	float:left;
+}
+
+#seleccionTabla2x2Div{
+	float:left;
+	
+}
+
+#seleccionTabla4x4Div{
+	float:left;
+	padding-left:80px;
+}
+
+#contenedorTablas{
+
+	float:left;
+}
+
+#tablaMonohibridoDiv{
+
+	float:left;
+}
+
+#tablaDihibridoDiv{
+
+	float:left;
+}
+
+#verificarSeleccionButton{
+	margin-left: 125px;
+	margin-top: 550px;
+}
+
+#tablasAccesoriasMonohibrido{
+
+	margin-top: 30px;	
+}
+
+#tablaFenotipoMono{
+
+	margin-right: 50px;
+	float:left;
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<html>
+
+	<head>
+
+		<script src="../js/OD_punnettv2.js" type="text/javascript"></script>
+
+    	<link rel="stylesheet" type="text/css" href="../css/OD_punnettv2.css">
+    
+    	<title>Tablero de Punnett v2</title>
+
+	</head>
+
+	<body>
+
+		<div id = "divContenidoIzq">
+
+			<div id = "divTituloAplicacion">
+
+				<p>Tablero de Punnett v2</p>
+
+			</div>
+
+			<div id = "divImagenEjercicio">
+
+
+
+			</div>
+
+			<div id = "divEncabezadoEjercicio">
+
+				<!-- Obtener de xml -->
+				<p>
+					Si una planta homocigótica de tallo alto se cruza con una
+					homocigótica de tallo enano, sabiendo que el tallo alto es
+					dominante sobre el tallo enano, ¿Cómo serán los genotipos y
+					fenotipos de la F1?
+				</p>
+
+			</div>
+
+			<div id = "divParte1">
+
+				<h4>Tipo de cruza: </h4>
+
+				<select id="selectTipoCruza" onchange="">
+	                <option selected="selected" value="default">
+	                	Selecciona...
+	                </option>
+	                <option value="monohibrido">
+	                	Monohibrido
+	                </option>
+	                <option value="dihibrido">
+	                	Dihibrido
+	                </option>
+              	</select>
+
+				<div id = "divCaracteristicaEstudio1">
+
+					<h5>Caracteristica en estudio I</h5>
+                  	<!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  	<select id="selectCaracteristicaDeEstudio1" onchange = "">
+                    	<option selected="selected" value = "default">
+                      		Selecciona...
+                    	</option>
+                    	<option value = "tamanoTallo"> <!-- Obtener de xml -->
+                      		Tamaño tallo
+                    	</option>
+                    	<option value = "colorHoja"> <!-- Obtener de xml -->
+                      		Color de hoja
+                    	</option>
+                  	</select>
+                  	<br/>
+
+                  	<h5>Alelo Dominante</h5>
+                    <input type="text" id="aleloDominante1" maxlength="1">
+
+                  	<h5>Alelo Recesivo</h5>
+                    <input type="text" id="aleloRecesivo1" maxlength="1">
+					
+				</div>
+
+				<div id = "divCaracteristicaEstudio2">
+
+					<h5>Caracteristica en estudio II</h5>
+                  	<!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  	<select id="selectCaracteristicaDeEstudio2" onchange = "">
+                    	<option selected="selected" value = "default">
+                      		Selecciona...
+                    	</option>
+                    	<option value = "tamanoTallo"> <!-- Obtener de xml -->
+                      		Tamaño tallo
+                    	</option>
+                    	<option value = "colorHoja"> <!-- Obtener de xml -->
+                      		Color de hoja
+                    	</option>
+                  	</select>
+
+                  	<br/>
+
+                  	<h5>Alelo Dominante</h5>
+                    <input type = "text" id = "aleloDominante2" maxlength = "1">
+                    
+                  	<h5>Alelo Recesivo</h5>
+                    <input type = "text" id = "aleloRecesivo2" maxlength = "1">
+
+				</div>
+
+				<input id = "buttonVerificarParte1" type = "button" value = "Verificar" onClick = ""/>
+
+			</div>
+
+		</div>
+
+		<div id = "divContenidoDer">
+
+			<div id = "divSeleccionTabla">
+
+				<h5>Selecciona Tablero:</h5>
+
+				<button type = "button" id = "buttonSeleccion2by2" onClick = "">
+                <img id = "img2by2" src="../images/2by2Table.png">
+              	</button>
+
+              	<button type = "button" id = "buttonSeleccion4by4" onClick = "">
+                <img id = "img4by4" src="../images/4by4Table.png">
+              	</button>
+
+			</div>
+
+			<div id = "divTablaMono2x2">
+
+				<div class = "divTable">
+
+					<div class = "divRow">
+						
+						<div class = "divCell">
+							<input type = "button" id = "buttonValidarTablaMono" onclick = "" value = "Validar tabla"/>
+						</div>
+
+						<div class = "divCell">
+							<input type = "text" id = "celdaMono1" maxlength = "1"/>
+						</div>
+
+						<div class = "divCell">
+							<input type = "text" id = "celdaMono2" maxlength = "1"/>
+						</div>
+
+					</div>
+
+					<div class = "divRow">
+
+						<div class = "divCell">
+							<input type = "text" id = "celdaMono3" maxlength = "1"/>
+						</div>
+
+						<div class = "divCell">
+							<input type = "text" id = "celdaMono4" maxlength = "1"/>
+						</div>
+
+						<div class = "divCell">
+							<input type = "text" id = "celdaMono5" maxlength = "1"/>
+						</div>
+					</div>
+
+					<div class = "divRow">
+
+						<div class = "divCell">
+							<input type = "text" id = "celdaMono6" maxlength = "1"/>
+						</div>
+
+						<div class = "divCell">
+							<input type = "text" id = "celdaMono7" maxlength = "1"/>
+						</div>
+
+						<div class = "divCell">
+							<input type = "text" id = "celdaMono8" maxlength = "1"/>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div id = "divTablaDi4x4">
+
+				<!-- Yet to be implemented -->
+
+			</div>
+
+			<div id = "divTablasFenotipoGenotipo">
+
+				<div id = "divTablaFenotipo">
+
+
+
+				</div>
+
+				<div id = "divTablaGenotipo">
+
+					
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

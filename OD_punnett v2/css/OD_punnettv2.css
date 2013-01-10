@@ -1,0 +1,95 @@
+body{
+
+	background-color: #ffffff;
+}
+
+div.divTable{
+	
+	display:table;
+	width:auto;
+}
+
+div.divRow{
+
+	display:table-row;
+  	width:auto;
+  	clear:both;
+}
+
+div.divCell{
+
+	float:left;
+  	display:table-column;   
+  	width:33.3%;
+}
+
+/* -- Div Contenido Izq -- */
+/*---------<INICIO>--------*/
+
+#divContenidoIzq{
+
+	height: 100%;
+	width: 50%;
+	float: left;
+}
+
+
+
+
+
+
+/* -- Div Contenido Izq -- */
+/*----------<FIN>----------*/
+
+
+
+
+
+
+/* -- Div Contenido Der -- */
+/*---------<INICIO>--------*/
+
+#divContenidoDer{
+
+	height: 100%;
+	width: 50%;
+	float: right;
+}
+
+#buttonValidarTablaMono{
+
+	width: 100%;
+}
+
+#divSeleccionTabla{
+
+	background-color: #097591;
+}
+
+#buttonSeleccion2by2{
+
+	width: 45%;
+}
+
+#buttonSeleccion4by4{
+
+	width: 45%;
+	float: right;
+}
+#img2by2{
+
+	max-width: 100%;
+}
+
+#img4by4{
+
+	max-width: 100%;
+}
+
+/* -- Div Contenido Der -- */
+/*----------<FIN>----------*/
+
+
+
+
+

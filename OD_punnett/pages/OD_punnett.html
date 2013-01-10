@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html>
+  <head>
+    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/v4.2.0/kinetic-v4.2.0.js"></script>
+    
+    <script src="../js/OD_punnett.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../css/OD_punnett.css">
+    
+    <title>Tablero de Punnett</title>
+  
+  </head>
+
+  <body>
+    <!-- Etapa 1 -->
+    <div id="contenidoIzq">
+
+      <div id="contenedorEnunciado">
+          <h1>Tablero de Punnett</h1>
+          <!-- Encabezado ejercicio -->
+          <p>Si una planta homocigótica de tallo alto se cruza con una
+            homocigótica de tallo enano, sabiendo que el tallo alto es
+            dominante sobre el tallo enano, ¿Cómo serán los genotipos y
+            fenotipos de la F1?
+          </p>
+          <!-- Fin encabezado-->
+          <h4>Tipo de cruza: </h4>
+          <div>
+              <select id="tipoCruzaSeleccion" onchange="cambiarVisibilidadSeleccion()">
+                <option selected="selected" value="default">
+                  Selecciona...
+                </option>
+                <option value="monohibrido">
+                  Monohibrido
+                </option>
+                <option value="dihibrido">
+                  Dihibrido
+                </option>
+              </select>
+              <br/>
+          </div>
+
+          <div id="contenedorOpciones">
+              <div id="monohibridoDiv">
+                  <h5>Caracteristica en estudio I</h5>
+                  <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="caracteristicaDeEstudio1" onchange = "validarSeleccionCaracteristicaEstudio1()">
+                    <option selected="selected" value = "default">
+                      Selecciona...
+                    </option>
+                    <option value = "tamanoTallo">
+                      Tamaño tallo
+                    </option>
+                    <option value = "colorHoja">
+                      Color de hoja
+                    </option>
+                  </select>
+                  <br/>
+
+                  <h5>Alelo Dominante</h5>
+                    <input type="text" id="aleloDominanteMono" maxlength="1">
+                  <h5>Alelo Recesivo</h5>
+                    <input type="text" id="aleloRecesivoMono" maxlength="1">
+              </div>
+
+              <div id="dihibridoDiv">
+                    <h5>Caracteristica en estudio II</h5>
+                    <!--<input type="text" id="caracteristicaDeEstudio2">--><!--Metodo sin combobox-->
+                    <select id="caracteristicaDeEstudio2">
+                      <option selected="selected" value = "default">
+                      Selecciona...
+                      </option>
+                      <option value = "">
+                      Tamaño tallo
+                      </option>
+                      <option value = "">
+                      Color de hoja
+                      </option>
+                    </select>
+                    <br/>
+
+                    <h5>Alelo Dominante</h5>
+                      <input type="text" id="aleloDominanteDi" maxlength="1">
+                    <h5>Alelo Recesivo</h5>
+                      <input type="text" id="aleloRecesivoDi" maxlength="1">
+                </div>
+          </div>
+      </div>
+      <input id="verificarSeleccionButton" type="button" value="Verificar" onClick="verificarEtapa1()"></input>
+    </div>
+    <!-- Fin Etapa 1 -->
+
+    <div id="contenidoDer">
+      <div id="contenedorSeleccionTablas">
+          <div id="seleccionTablaDiv">
+            <h4>Selecciona Tablero:</h4>
+            <div id="seleccionTabla2x2Div">
+              <button type="button" onClick="seleccionTablaMonohibrido()">
+                <img src="../images/2by2Table.png">
+              </button>
+            </div>
+
+            <div id="seleccionTabla4x4Div">
+              <button type="button" onClick="seleccionTablaDihibrido()">
+                <img src="../images/4by4Table.png">
+              </button>
+            </div>
+          </div>
+      </div>
+
+      <div id ="contenedorTablas">
+        <div id="tablaMonohibridoDiv">
+          <table>
+            <tr bgcolor="gray">
+              <td> 
+                <button type="button" id="validarTablaMono" onclick="validarTablaMonohibrido()">Verificar Tabla</button>
+              </td>
+              <td><input type="text" id="celdaMonohibrido1" maxlength="1" ></td>
+              <td><input type="text" id="celdaMonohibrido2" maxlength="1" ></td>
+            </tr>
+              
+            <tr>
+              <td bgcolor="gray"><input type="text" id="celdaMonohibrido3" maxlength="1" ></td>
+              <td><input type="text" id="celdaMonohibrido4" maxlength="2" ></td>
+              <td><input type="text" id="celdaMonohibrido5" maxlength="2" ></td>
+            </tr>
+              
+            <tr>
+              <td bgcolor="gray"><input type="text" id="celdaMonohibrido6" maxlength="1" ></td>
+              <td><input type="text" id="celdaMonohibrido7" maxlength="2" ></td>
+              <td><input type="text" id="celdaMonohibrido8" maxlength="2" ></td>
+            </tr>
+          </table>
+
+          <div id="tablasAccesoriasMonohibrido">
+            <table id="tablaFenotipoMono" class="tablaAccesoria">
+              <tr>
+                <th>Fenotipo</th>
+                <th>Proporcion</th>
+              </tr>
+
+              <tr>
+                <td>
+                  <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="fenotipoMonohibrido0">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido0"></td>
+              </tr>
+
+              <tr>
+                <td><!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="fenotipoMonohibrido1">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido1"></td>
+              </tr>
+
+              <tr>
+                <td>
+                <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="fenotipoMonohibrido2">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido2"></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="fenotipoMonohibrido3">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido3"></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="fenotipoMonohibrido4">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido4"></td>
+              </tr>
+            </table>
+
+            <table id="tablaGenotipoMono" class="tablaAccesoria">
+              <tr>
+                <th>Genotipo</th>
+                <th>Proporcion</th>
+              </tr>
+
+              <tr>
+                <td>
+                  <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="genotipoMonohibrido0">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido0"></td>
+              </tr>
+
+              <tr>
+                <td><!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="genotipoMonohibrido1">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido1"></td>
+              </tr>
+
+              <tr>
+                <td>
+                <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="genotipoMonohibrido2">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido2"></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="genotipoMonohibrido3">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido3"></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <!--<input type="text" id="caracteristicaDeEstudio1">--><!--Metodo sin combobox-->
+                  <select id="genotipoMonohibrido4">
+                    <option selected="selected">
+                      Selecciona...
+                    </option>
+                    <option>
+                      Tamaño tallo
+                    </option>
+                    <option>
+                      Color de hoja
+                    </option>
+                  </select>
+                </td>
+                <td><input type="text" id="proporcionMonohibrido4"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="tablaDihibridoDiv">
+          <table>
+            <tr bgcolor="gray">
+              <td> </td>
+              <td><input type="text" id="celdaDihibrido1" maxlength="2"></td>
+              <td><input type="text" id="celdaDihibrido2" maxlength="2"></td>
+              <td><input type="text" id="celdaDihibrido3" maxlength="2"></td>
+              <td><input type="text" id="celdaDihibrido4" maxlength="2"></td>
+            </tr>
+
+            <tr>
+              <td bgcolor="gray"><input type="text" id="celdaDihibrido5" maxlength="2"></td>
+              <td><input type="text" id="celdaDihibrido6" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido7" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido8" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido9" maxlength="4"></td>
+            </tr>
+
+            <tr>
+              <td bgcolor="gray"><input type="text" id="celdaDihibrido10" maxlength="2"></td>
+              <td><input type="text" id="celdaDihibrido11" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido12" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido13" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido14" maxlength="4"></td>
+            </tr>
+
+            <tr>
+              <td bgcolor="gray"><input type="text" id="celdaDihibrido15" maxlength="2"></td>
+              <td><input type="text" id="celdaDihibrido16" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido17" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido18" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido19" maxlength="4"></td>
+            </tr>
+
+            <tr>
+              <td bgcolor="gray"><input type="text" id="celdaDihibrido" maxlength="2"></td>
+              <td><input type="text" id="celdaDihibrido21" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido22" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido23" maxlength="4"></td>
+              <td><input type="text" id="celdaDihibrido24" maxlength="4"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div> 
+  </body>
+</html>
