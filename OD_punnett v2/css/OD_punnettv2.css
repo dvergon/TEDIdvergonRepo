@@ -41,7 +41,26 @@ div.divCell{
 /* -- Div Contenido Izq -- */
 /*----------<FIN>----------*/
 
+#selectTipoCruza{
 
+ 	float: left;
+}
+
+#divCaracteristicaEstudio1{
+
+	float: left;
+}
+
+#divCaracteristicaEstudio2{
+
+	float: right;
+}
+
+#buttonVerificarParte1{
+
+	float: left;
+	margin-top: 50%;
+}
 
 
 
@@ -53,7 +72,7 @@ div.divCell{
 
 	height: 100%;
 	width: 50%;
-	float: right;
+	margin-left: 50%;
 }
 
 #buttonValidarTablaMono{
