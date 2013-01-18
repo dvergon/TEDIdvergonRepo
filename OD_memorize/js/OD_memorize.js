@@ -10,17 +10,25 @@ var cardHeight = 260;
 
 var cardMarginX = 100;
 
-var cardMarginY = 100;
+var cardMarginY = 125;
 
 var cardLayer;
 
 var cardArray;
+
+var kineticImageArray;
 
 var cardImageDirectory = "../images/";
 
 var cardImageFormat = ".png";
 
 var cardPairsQ = 20; //Cantidad de pares de cartas disponibles
+
+var animFront;
+
+var animBack;
+
+var period = 2000; //Duracion de la animacion completa front+back
 
 /*---------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------*/
@@ -36,6 +44,8 @@ window.onload = function(){
   cardLayer = new Kinetic.Layer();
 
   cardArray = new Array();
+
+  kineticImageArray = new Array();
 
 }
 
@@ -149,24 +159,36 @@ function faceDownFill(){
       break;
   }
 
+  var elementIndex = 0;
 
   for(var indexRow = 0; indexRow < rowQ; indexRow++){
     for(var indexCol = 0; indexCol < colQ; indexCol++){
 
-      var cardAux = cardArray[indexRow+indexCol];
+      var cardAux = cardArray[elementIndex];
+      console.log(elementIndex);
 
       //console.log(cardAux.getImgBack()+" "+cardAux.getImgFront()+" "+cardAux.getWidth()+" "+cardAux.getHeight()+" "+cardAux.getImgObjFront()+" "+cardAux.getImgObjBack());
 
-      kineticImageAux = new Kinetic.Image({
+      var kineticCardImage = new Kinetic.Image({
         x: cardWidth * indexCol + cardMarginX,
         y: cardHeight * indexRow + cardMarginY,
         image: cardAux.getImgObjFront(),
         width: cardAux.getWidth(),
         height: cardAux.getHeight(),
-        offset: [cardAux.getWidth()/2, cardAux.getHeight()/2]
+        offset: [cardAux.getWidth()/2, cardAux.getHeight()/2],
+        id: elementIndex
       });
 
-      cardLayer.add(kineticImageAux);
+      kineticCardImage.on("click", function(evt){
+
+        startAnimation(this.getId());
+      });
+
+      kineticImageArray[elementIndex] = kineticCardImage;
+
+      cardLayer.add(kineticImageArray[elementIndex]);
+
+      elementIndex++;
     }
   }
 
@@ -195,13 +217,13 @@ function createRandomCardArray(pairsQuantityUser){
 
   for(var index = 0; index < pairsQuantityUser; index++){
 
-    var randomNumber = Math.floor(Math.random()*cardPairsQ);
+    var randomNumber = (Math.floor(Math.random()*cardPairsQ)) + 1;
     
     if(cardCreatedIndexes.indexOf(randomNumber) == -1){
 
       cardCreatedIndexes[index] = randomNumber;
 
-      var cardImageName = randomNumber+1;
+      var cardImageName = randomNumber;
 
       cardAux = new Card((cardImageDirectory+"0"+cardImageFormat),(cardImageDirectory+cardImageName+cardImageFormat), cardWidth, cardHeight);
 
@@ -220,16 +242,48 @@ function createRandomCardArray(pairsQuantityUser){
 
       var cardImageName = index + "-" + index;
 
-      cardAux2 = new Card((cardImageDirectory+"0"+cardImageFormat),(cardImageDirectory+cardImageName+cardImageFormat), cardWidth, cardHeight);
+      cardAux = new Card((cardImageDirectory+"0"+cardImageFormat),(cardImageDirectory+cardImageName+cardImageFormat), cardWidth, cardHeight);
 
-      cardArray[index] = cardAux2;
+      cardArray[cardArray.length] = cardAux;
     }
 
   }
 
 }
 
-function startAnimation(){
+function startAnimation(kineticImageId){
 
+  var kineticId = kineticImageId;
 
+  animFront = new Kinetic.Animation(function(frame) {
+            var scale = Math.sin(frame.time * 2 * Math.PI / period) + 0.001;
+            kineticStage.get("#"+kineticId)[0].setScale(scale, 1);
+  }, cardLayer);
+
+  animFront.start();
+
+  window.setTimeout(function(){changeAnimationImage(kineticId)}, 1000);
+
+}
+
+function changeAnimationImage(kineticImageId){
+
+  var kineticId = parseInt(kineticImageId);
+
+  animFront.stop();
+
+  var imgObjAux = cardArray[kineticId].getImgObjBack();
+
+  kineticStage.get("#"+kineticId)[0].setImage(imgObjAux);
+
+  animBack = new Kinetic.Animation(function(frame) {
+            var scale = Math.sin(frame.time * 2 * Math.PI / period) + 0.001;
+            kineticStage.get("#"+kineticImageId)[0].setScale(scale, 1);
+  }, cardLayer);
+
+  cardLayer.draw();
+
+  animBack.start();
+
+  window.setTimeout("animBack.stop()", 500);
 }
