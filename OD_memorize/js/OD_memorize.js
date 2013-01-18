@@ -28,7 +28,7 @@ var animFront;
 
 var animBack;
 
-var period = 2000; //Duracion de la animacion completa front+back
+var period = 1000; //Duracion de la animacion completa front+back
 
 /*---------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------*/
@@ -53,7 +53,7 @@ window.onload = function(){
 ---------------------------------------------------------------------------------------*/
 
 //Los parametros imgPathFront/imgPathBack deben ser entregados en string
-function Card (imgPathFront, imgPathBack, width, height){
+function Card (imgPathBack, imgPathFront, width, height){
 
   this.imgFront = imgPathFront;
   this.imgBack = imgPathBack;
@@ -172,7 +172,7 @@ function faceDownFill(){
       var kineticCardImage = new Kinetic.Image({
         x: cardWidth * indexCol + cardMarginX,
         y: cardHeight * indexRow + cardMarginY,
-        image: cardAux.getImgObjFront(),
+        image: cardAux.getImgObjBack(),
         width: cardAux.getWidth(),
         height: cardAux.getHeight(),
         offset: [cardAux.getWidth()/2, cardAux.getHeight()/2],
@@ -181,7 +181,7 @@ function faceDownFill(){
 
       kineticCardImage.on("click", function(evt){
 
-        startAnimation(this.getId());
+        changeImageAnimation(this.getId());
       });
 
       kineticImageArray[elementIndex] = kineticCardImage;
@@ -251,7 +251,7 @@ function createRandomCardArray(pairsQuantityUser){
 
 }
 
-function startAnimation(kineticImageId){
+/*function startAnimation(kineticImageId){
 
   var kineticId = kineticImageId;
 
@@ -262,17 +262,24 @@ function startAnimation(kineticImageId){
 
   animFront.start();
 
-  window.setTimeout(function(){changeAnimationImage(kineticId)}, 1000);
+  window.setTimeout(function(){changeAnimationImage(kineticId)}, (period/2));
 
-}
+}*/
 
-function changeAnimationImage(kineticImageId){
+function changeImageAnimation(kineticImageId){
 
   var kineticId = parseInt(kineticImageId);
 
-  animFront.stop();
+  var imgObjAux;
 
-  var imgObjAux = cardArray[kineticId].getImgObjBack();
+  if(cardArray[kineticId].getImgObjFront().src == kineticStage.get("#"+kineticId)[0].getImage().src){
+
+    imgObjAux = cardArray[kineticId].getImgObjBack();
+
+  }else{
+
+    imgObjAux = cardArray[kineticId].getImgObjFront();
+  }
 
   kineticStage.get("#"+kineticId)[0].setImage(imgObjAux);
 
@@ -281,9 +288,7 @@ function changeAnimationImage(kineticImageId){
             kineticStage.get("#"+kineticImageId)[0].setScale(scale, 1);
   }, cardLayer);
 
-  cardLayer.draw();
-
   animBack.start();
 
-  window.setTimeout("animBack.stop()", 500);
+  window.setTimeout("animBack.stop()", (period/4));
 }
