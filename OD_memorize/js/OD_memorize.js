@@ -290,5 +290,7 @@ function changeImageAnimation(kineticImageId){
 
   animBack.start();
 
-  window.setTimeout("animBack.stop()", (period/4));
+  window.setTimeout(function(){changeAnimationImage(kineticId)}, (period/4));
 }
+
+//Este es un cambio
