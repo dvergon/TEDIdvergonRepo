@@ -1,0 +1,19 @@
+div.divTable{
+  
+  display:table;
+  width:auto;
+}
+
+div.divRow{
+
+  display:table-row;
+    width:auto;
+    clear:both;
+}
+
+div.divCell{
+
+  float:left;
+    display:table-column;   
+    width:33.3%;
+}
