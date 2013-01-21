@@ -30,6 +30,8 @@ var animBack;
 
 var period = 1000; //Duracion de la animacion completa front+back
 
+var allowAnim = true; //Permite o deniega animacion
+
 /*---------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------*/
 
@@ -281,16 +283,19 @@ function changeImageAnimation(kineticImageId){
     imgObjAux = cardArray[kineticId].getImgObjFront();
   }
 
-  kineticStage.get("#"+kineticId)[0].setImage(imgObjAux);
+  if(allowAnim){
 
-  animBack = new Kinetic.Animation(function(frame) {
-            var scale = Math.sin(frame.time * 2 * Math.PI / period) + 0.001;
-            kineticStage.get("#"+kineticImageId)[0].setScale(scale, 1);
-  }, cardLayer);
+    kineticStage.get("#"+kineticId)[0].setImage(imgObjAux);
 
-  animBack.start();
+    animBack = new Kinetic.Animation(function(frame) {
+              var scale = Math.sin(frame.time * 2 * Math.PI / period) + 0.001;
+              kineticStage.get("#"+kineticImageId)[0].setScale(scale, 1);
+    }, cardLayer);
 
-  window.setTimeout(function(){changeAnimationImage(kineticId)}, (period/4));
+    animBack.start();
+    allowAnim = false;
+
+    window.setTimeout(function(){animBack.stop(); allowAnim = true;}, (period/4));
+  }
+  
 }
-
-//Este es un cambio
