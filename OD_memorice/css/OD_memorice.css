@@ -1,19 +1,40 @@
-div.divTable{
-  
-  display:table;
-  width:auto;
+p.tedi{
+
+	font-size: 35px;
 }
 
-div.divRow{
+input.score{
 
-  display:table-row;
-    width:auto;
-    clear:both;
+	width: 10%;
 }
 
-div.divCell{
+#tries{
 
-  float:left;
-    display:table-column;   
-    width:33.3%;
+	background-color: #FFFF66;
+	text-align: center;
 }
+
+#correct{
+
+	background-color: #66FF66;
+	text-align: center;
+}
+
+#wrong{
+
+	background-color: #FF6666;
+	text-align: center;
+}
+
+#UIContainer{
+
+	width: 100%;
+	height: 15%;
+}
+
+#stageContainer{
+
+	width: 100%;
+	height: 85%;
+}
+
